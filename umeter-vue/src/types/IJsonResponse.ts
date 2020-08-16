@@ -2,7 +2,7 @@ interface IJsonResponse {
 
     status : boolean;
     data? : any;
-    error? : any;
+    errors? : {[state: string]: string};
     hasNextPage? : boolean;
     numberOfPages? : number;
     nextPage? : number;
