@@ -4,7 +4,7 @@ from . import User
 
 class Role(models.Model, ModelMixin):
 	definition = models.CharField(max_length=50)
-	users = models.ManyToManyField(User, on_delete=models.DO_NOTHING, related_name=roles)
+	users = models.ManyToManyField(User, on_delete=models.DO_NOTHING, related_name="roles")
 	
 	def get_dict(self):
 		return {
