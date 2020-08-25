@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "vuex-module-decorators": "^0.17.0"
+  }
+}
