@@ -11,8 +11,8 @@ export default class SignInMixin extends Vue {
     password: string = "";
     keepSignedIn: boolean = false;
     signingIn: boolean = false;
-    errorMessages: IIndexableObject = {};
-    @Ref() signInForm!: IIndexableObject;
+    errorMessages: {[key: string]: any} = {};
+    @Ref() signInForm!: {[key: string]: any};
     
     defaultNext!: string;
     requiredRule = requiredRule;
@@ -22,14 +22,14 @@ export default class SignInMixin extends Vue {
         super()
     }
 
-    async signIn(): Promise<IIndexableObject> {
+    async signIn(): Promise<{[key: string]: any}> {
         if (this.signInForm.validate()) {  
             try {
                 this.signingIn = true;
                 var response = await http.getJson(`/accounts/sign-in/?r=${this.keepSignedIn}`, {username: this.username, password: this.password}, "POST");
                 this.signingIn = false;
                 if (!response.status)
-                    this.errorMessages = {signIn: response.error};
+                    this.errorMessages = {signIn: response.errors};
                 else this.$router.push(this.next || this.defaultNext);
                 return response;
             } catch {

@@ -1,0 +1,88 @@
+@import "./materialdesignicons.min.css";
+@import "./animate.css";
+
+/* fallback */
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/MaterialDesignIcons.woff2") format('woff2');
+}
+
+/* latin-ext */
+@font-face {
+    font-family: roboto;
+    font-style: normal;
+    font-weight: 100;
+    src: url("../fonts/OpenSans-Regular.ttf");
+}
+
+@font-face {
+    font-family: motion-picture;
+    font-style: normal;
+    font-weight: 100;
+    src: url("../fonts/OpenSans-SemiboldItalic.ttf");
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+  
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+  
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+  
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+  
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+.logo {
+    font-family: motion-picture !important;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.app-bar {
+    border-bottom: 1px rgba(0, 0, 0, 0.1) solid !important;
+    /* background-color: white !important; */
+}
+
+.toolbar{
+    margin-top: 48px !important;
+}
+
+@media screen and (min-width: 960px){
+    .toolbar{
+        margin-top: 64px !important;
+    }
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.chaport-container .chaport-launcher .chaport-launcher-button {
+    bottom: 70px !important;
+    box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 20px !important;
+}
+
+.chaport-container.chaport-container-positioned .chaport-window {
+    right: 90px !important;
+    box-shadow: rgba(0, 0, 0, 0.3) 1px 1px 20px !important;
+
+}

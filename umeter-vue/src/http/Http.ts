@@ -1,5 +1,5 @@
 export interface Settings {
-    headers: IIndexableObject;
+    headers: {[key: string]: any};
     base?: string;
     withCredentials?: boolean;
     cors?: boolean;
@@ -8,7 +8,7 @@ export interface Settings {
 export interface RequestObject {
     url: string;
     method?: string;
-    headers?: IIndexableObject;
+    headers?: {[key: string]: any};
     timeout?: number;
     content?: FormData | string;
 }
@@ -22,7 +22,7 @@ export class JsonXMLHttpRequest extends XMLHttpRequest {
         var response = JSON.parse(this.responseText);
         return {
             status: response.status,
-            error: response.error,
+            errors: response.errors,
             data: response.data,
             hasNextPage: response.next_page != null || parseInt(response.next_page) > 0,
             nextPage: response.next_page,
@@ -77,7 +77,7 @@ export class Http {
         })
     }
 
-    post(url: string, params: IIndexableObject, contentType = '', timeout = 15000) {
+    post(url: string, params: {[key: string]: any}, contentType = '', timeout = 15000) {
         if (contentType == 'application/json') {
             const content = JSON.stringify(params)
             const headers = { 'Content-Type': contentType }
@@ -102,7 +102,7 @@ export class Http {
         }
     }
 
-    get(url: string, params: IIndexableObject = {}) {
+    get(url: string, params: {[key: string]: any} = {}) {
         let query = ''
         for (const param in params) {
             query += `&${param}=${escape(params[param])}`
@@ -118,7 +118,7 @@ export class Http {
             })
     }
 
-    getJson(url: string, params: IIndexableObject = {}, method = 'GET', contentType = ''): Promise<IJsonResponse> {
+    getJson(url: string, params: {[key: string]: any} = {}, method = 'GET', contentType = ''): Promise<IJsonResponse> {
         if (method == 'POST') {
             return this.post(url, params, contentType).then(response => response.json())
         }

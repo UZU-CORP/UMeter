@@ -15,19 +15,19 @@ export default class SignUpMixin extends Vue{
     password: string = "";
     signingUp: boolean = false;
     keepSignedIn: boolean = false;
-    otherFields: IIndexableObject = {};
-    errorMessages: IIndexableObject = {};
+    otherFields: {[key: string]: any} = {};
+    errorMessages: {[key: string]: any} = {};
     requiredRule = requiredRule;
     emailRule = emailRule;
     requiredLengthRule = requiredLengthRule;
 
-    @Ref() signUpForm!: IIndexableObject;
+    @Ref() signUpForm!: {[key: string]: any};
 
     constructor() {
         super()
     }
 
-    async signUp(): Promise<IIndexableObject> {
+    async signUp(): Promise<{[key: string]: any}> {
         if (this.signUpForm.validate()){
             try {
                 this.signingUp = true;
@@ -40,7 +40,7 @@ export default class SignUpMixin extends Vue{
                 }, "POST");
                 this.signingUp = false;
                 if (!response.status)
-                    this.errorMessages = {signUp: response.error};
+                    this.errorMessages = {signUp: response.errors};
                 this.$router.push(this.defaultNext);
                 return response;
             } catch {
