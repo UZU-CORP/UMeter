@@ -1,0 +1,9 @@
+from django.db import models
+from utils.models import ModelMixin
+
+class {{CLASS_NAME}}(models.Model, ModelMixin):
+	
+	def get_dict(self):
+		return {
+
+		}

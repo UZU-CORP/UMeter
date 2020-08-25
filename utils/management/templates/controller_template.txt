@@ -1,0 +1,16 @@
+from utils.controller import Controller
+from utils.shortcuts import json_response
+
+class {{CLASS_NAME}}(Controller):
+
+
+    @Controller.route()
+    def create(self, request):       
+        """
+        @post_param {string} 
+        @get_param {string} 
+
+        """
+        return json_response(status=True)
+
+        
