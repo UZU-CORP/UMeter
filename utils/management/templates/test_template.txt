@@ -1,0 +1,5 @@
+from django.test import TestCase
+from utils.tests import TestMixin
+
+class {{CLASS_NAME}}(TestCase, TestMixin):
+	pass
